@@ -1,4 +1,6 @@
-import WorkPiece from "../components/workpiece";
+import ReactMarkdown from "react-markdown/with-html";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const sampleworks = [
   {
@@ -77,31 +79,57 @@ const sampleworks = [
     imageAlt: "",
   },
 ];
-function HomePage() {
+
+export default function HomePage({ experienceList, expertiseList, inspirationList }) {
   return (
     <div className="bg-white pt-12 text-gray-900">
       <header className="mt-6 lg:mt-64 bg-white px-8 lg:px-12">
-        <div className="lg:max-w-lg lg:max-w-full px-8">
-          <h1 className="text-2xl lg:text-5xl font-black leading-tight">
-            KoalaDigital / Custom Web Solutions in Ryde, Sydney Australia
+        <div className="lg:max-w-full px-8">
+          <h1 className="text-4xl lg:text-5xl font-black leading-tight">
+            <span class="text-gray-900">KoalaDigital</span>
           </h1>
-          <p className="mt-6 text-2xl lg:text-4xl leading-snug">
-            I am Bach • I work with business of any size to build new or extend
-            their Web applications and Shopify stores • With a fixed monthly
-            fee, you can have me as your Webmaster who will maintain and enhance
-            your web application on demand.
+          <p className="mt-2 text-2xl lg:text-3xl lg:max-w-5xl leading-snug text-gray-700">
+            My name is Bach, I design and develop websites, extensions and online stores that are fit and profitable.
           </p>
         </div>
       </header>
 
-      <section className="mt-24 px-0 lg:mt-48 lg:px-12">
+      <section id="expertise" className="mt-24 px-0 lg:mt-48 lg:px-12">
         <div className="mx-auto lg:max-w-full">
           <h2 className="text-3xl px-8 lg:text-4xl font-bold leading-tight">
-            Sample work
+            My Expertise
           </h2>
           <div className="flex flex-wrap mt-12 lg:mt-24">
-            {sampleworks.map((workpiece, index) => (
-              <WorkPiece key={index} {...workpiece} />
+            {expertiseList.map((project, index) => (
+              <PostSnippet key={index} {...project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" className="mt-24 px-0 lg:mt-48 lg:px-12">
+        <div className="mx-auto lg:max-w-full">
+          <h2 className="text-3xl px-8 lg:text-4xl font-bold leading-tight">
+            My Experience
+          </h2>
+          <div className="mt-12 lg:mt-24 grid lg:grid-cols-3 gap-3">
+            {experienceList.map((project, index) => (
+              <div>
+                <PostSnippet key={index} {...project} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" className="mt-24 px-0 lg:mt-48 lg:px-12">
+        <div className="mx-auto lg:max-w-full">
+          <h2 className="text-3xl px-8 lg:text-4xl font-bold leading-tight">
+            My Inspirations
+          </h2>
+          <div className="flex flex-wrap mt-12 lg:mt-24">
+            {inspirationList.map((project, index) => (
+              <PostSnippet key={index} {...project} />
             ))}
           </div>
         </div>
@@ -110,13 +138,7 @@ function HomePage() {
       <section className="mt-24 lg:mt-48 px-0 lg:px-16 py-12 lg:py-24 bg-black text-gray-400">
         <div className="px-4 lg:max-w-full">
           <h2 className="text-xl md:text-2xl lg:text-5xl font-bold leading-tight">
-            Whether you develop a custom web application, refresh an existing
-            web interface, or simply need a webmaster who can look after your
-            digital presence,{" "}
-            <a className="text-gray-700" href="mailto:bach@koaladigital.com.au">
-              email me
-            </a>
-            . First consultation is free.{` `}
+            Chat with me instanstly on this website
           </h2>
         </div>
       </section>
@@ -124,4 +146,76 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+HomePage.getInitialProps = async () => {
+  const posts = await importPosts();
+
+  const expertiseList = posts.filter(p => p.attributes.type === 'expertise');
+  const experienceList = posts.filter(p => p.attributes.type === 'experience');
+  const inspirationList = posts.filter(p => p.attributes.type === 'inspiration');
+
+  return {
+    expertiseList,
+    experienceList,
+    inspirationList,
+  };
+};
+
+/**
+ * React component to render Post Snippet
+ */
+function PostSnippet({ attributes, slug }) {
+  const { title, description, images } = attributes;
+  const { basePath } = useRouter();
+
+  return (
+    <Link href={`/post/${slug}`}>
+      <a className="block hover:opacity-75 transition duration-200">
+        <div className="relative">
+          {images[0] ? (
+            <img
+              src={`${basePath}/${images[0].src}`}
+              alt={title}
+              className="object-cover rounded-sm border border-gray-300 shadow-md"
+            />
+          ) : (
+              <div className="bg-gray-200 pt-2/3"></div>
+            )}
+        </div>
+        <h3 className="text-xl lg:text-2xl mt-4 mb-2 font-bold">{title}</h3>
+        <div className="text-lg lg:text-xl text-gray-900 leading-snug">
+          <ReactMarkdown
+            escapeHtml={false}
+            source={description}></ReactMarkdown>
+        </div>
+      </a>
+    </Link>
+  );
+}
+
+
+/**********************************************************/
+/******************* Support Functions ********************/
+/**********************************************************/
+
+/**
+ * Reference:
+ * https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
+ * second flag in require.context function is TRUE if subdirectories should be searched
+ * 
+ * BE CAREFUL: 
+ * Don't make the '../content/posts' into an external constant or variable. 
+ * For some unknown reason, that will break the execution of require.context().
+ * Only change the string here.
+ */
+async function importPosts() {
+  const markdownFiles = require
+    .context('../content/posts', false, /\.md$/)
+    .keys()
+    .map((relativePath) => relativePath.substring(2));
+  return Promise.all(
+    markdownFiles.map(async (path) => {
+      const markdown = await import(`../content/posts/${path}`);
+      return { ...markdown, slug: path.substring(0, path.length - 3) };
+    })
+  );
+};

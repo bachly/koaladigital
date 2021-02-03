@@ -5,7 +5,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    const title = `KoalaDigital 🐨 | Custom Web, Shopify and Webmaster Service in Ryde
+    const title = `KoalaDigital 🐨 | Custom Website & Shopify Developer in Ryde
     Sydney, Australia`;
 
     return (
@@ -14,7 +14,8 @@ class MyApp extends App {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <meta
-            content="Professional Service to build new or extend your Web Applications and Shopify stores • First consultation free • Affordable Webmaster Service also available"
+            content="Bespoke website and Shopify store design service • System integration
+            • Simple pricing and flat-fee quote • Experience & knowledge from established Australian companies"
             name="description"
           />
           <meta content={title} property="og:title" />

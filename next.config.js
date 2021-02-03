@@ -37,18 +37,12 @@ module.exports = {
       "/triviaSlides": { page: "/triviaSlides" },
     };
 
-    // get all .md files in the lists dir
-    // const blogs = glob.sync("content/lists/**/*.md");
-
-    // // remove path and extension to leave filename only
-    // const blogSlugs = blogs.map((file) => {
-    //   return file.split("/")[2].replace(/ /g, "-").slice(0, -3).trim();
-    // });
-
-    // // add each list to the paths obj
-    // blogSlugs.forEach((slug) => {
-    //   paths[`/list/${slug}`] = { page: "/list/[slug]", query: { slug } };
-    // });
+    // Post: '/post/[slug]'
+    const posts = glob.sync("content/posts/*.md");
+    const postSlugs = posts.map((file) => file.split("/")[2].replace(/ /g, "-").slice(0, -3).trim());
+    postSlugs.forEach((slug) => {
+      paths[`/post/${slug}`] = { page: "/post/[slug]", query: { slug } };
+    });
 
     console.log("> Exporting following paths:", paths);
 
