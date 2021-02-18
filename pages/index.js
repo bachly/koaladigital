@@ -1,5 +1,5 @@
-import ReactMarkdown from "react-markdown/with-html";
 import Link from "next/link";
+import { getAllPosts } from '../lib/api'
 import { useRouter } from "next/router";
 
 const sampleworks = [
@@ -80,7 +80,7 @@ const sampleworks = [
   },
 ];
 
-export default function HomePage({ experienceList, expertiseList, inspirationList }) {
+export default function HomePage({ experienceList }) {
   return (
     <div className="bg-white pt-12 text-gray-900">
       <header className="mt-6 lg:mt-64 bg-white px-8 lg:px-12">
@@ -89,7 +89,7 @@ export default function HomePage({ experienceList, expertiseList, inspirationLis
             <span class="text-gray-900">KoalaDigital</span>
           </h1>
           <p className="mt-2 text-2xl lg:text-3xl lg:max-w-5xl leading-snug text-gray-700">
-            My name is Bach, I design and develop websites, extensions and online stores that are fit and profitable.
+            My name is Bach, I design and develop websites, system integrations and online stores that look good, engage customers and are simple to run.
           </p>
         </div>
       </header>
@@ -97,12 +97,9 @@ export default function HomePage({ experienceList, expertiseList, inspirationLis
       <section id="expertise" className="mt-24 px-0 lg:mt-48 lg:px-12">
         <div className="mx-auto lg:max-w-full">
           <h2 className="text-3xl px-8 lg:text-4xl font-bold leading-tight">
-            My Expertise
+            Services
           </h2>
           <div className="flex flex-wrap mt-12 lg:mt-24">
-            {expertiseList.map((project, index) => (
-              <PostSnippet key={index} {...project} />
-            ))}
           </div>
         </div>
       </section>
@@ -110,26 +107,13 @@ export default function HomePage({ experienceList, expertiseList, inspirationLis
       <section id="experience" className="mt-24 px-0 lg:mt-48 lg:px-12">
         <div className="mx-auto lg:max-w-full">
           <h2 className="text-3xl px-8 lg:text-4xl font-bold leading-tight">
-            My Experience
+            Experience
           </h2>
           <div className="mt-12 lg:mt-24 grid lg:grid-cols-3 gap-3">
-            {experienceList.map((project, index) => (
+            {experienceList.map((item, index) => (
               <div>
-                <PostSnippet key={index} {...project} />
+                <PostPreview key={index} {...item} />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" className="mt-24 px-0 lg:mt-48 lg:px-12">
-        <div className="mx-auto lg:max-w-full">
-          <h2 className="text-3xl px-8 lg:text-4xl font-bold leading-tight">
-            My Inspirations
-          </h2>
-          <div className="flex flex-wrap mt-12 lg:mt-24">
-            {inspirationList.map((project, index) => (
-              <PostSnippet key={index} {...project} />
             ))}
           </div>
         </div>
@@ -146,34 +130,37 @@ export default function HomePage({ experienceList, expertiseList, inspirationLis
   );
 }
 
-HomePage.getInitialProps = async () => {
-  const posts = await importPosts();
+export async function getStaticProps() {
+  const posts = getAllPosts([
+    'title',
+    'type',
+    'date',
+    'slug',
+    'coverImage'
+  ])
 
-  const expertiseList = posts.filter(p => p.attributes.type === 'expertise');
-  const experienceList = posts.filter(p => p.attributes.type === 'experience');
-  const inspirationList = posts.filter(p => p.attributes.type === 'inspiration');
+  const experienceList = posts.filter(p => p.type === 'experience');
 
   return {
-    expertiseList,
-    experienceList,
-    inspirationList,
+    props: {
+      experienceList,
+    }
   };
 };
 
 /**
  * React component to render Post Snippet
  */
-function PostSnippet({ attributes, slug }) {
-  const { title, description, images } = attributes;
+function PostPreview({ title, coverImage, slug }) {
   const { basePath } = useRouter();
 
   return (
     <Link href={`/post/${slug}`}>
       <a className="block hover:opacity-75 transition duration-200">
         <div className="relative">
-          {images[0] ? (
+          {coverImage ? (
             <img
-              src={`${basePath}/${images[0].src}`}
+              src={`${basePath}/${coverImage}`}
               alt={title}
               className="object-cover rounded-sm border border-gray-300 shadow-md"
             />
@@ -182,40 +169,7 @@ function PostSnippet({ attributes, slug }) {
             )}
         </div>
         <h3 className="text-xl lg:text-2xl mt-4 mb-2 font-bold">{title}</h3>
-        <div className="text-lg lg:text-xl text-gray-900 leading-snug">
-          <ReactMarkdown
-            escapeHtml={false}
-            source={description}></ReactMarkdown>
-        </div>
       </a>
     </Link>
   );
 }
-
-
-/**********************************************************/
-/******************* Support Functions ********************/
-/**********************************************************/
-
-/**
- * Reference:
- * https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
- * second flag in require.context function is TRUE if subdirectories should be searched
- * 
- * BE CAREFUL: 
- * Don't make the '../content/posts' into an external constant or variable. 
- * For some unknown reason, that will break the execution of require.context().
- * Only change the string here.
- */
-async function importPosts() {
-  const markdownFiles = require
-    .context('../content/posts', false, /\.md$/)
-    .keys()
-    .map((relativePath) => relativePath.substring(2));
-  return Promise.all(
-    markdownFiles.map(async (path) => {
-      const markdown = await import(`../content/posts/${path}`);
-      return { ...markdown, slug: path.substring(0, path.length - 3) };
-    })
-  );
-};

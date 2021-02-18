@@ -4,11 +4,11 @@ module.exports = {
   webpack: (config, options) => {
     const { isServer } = options;
     config.module.rules.push(
-      {
-        test: /\.md$/,
-        loader: "frontmatter-markdown-loader",
-        options: { mode: ["body"] },
-      },
+      // {
+      //   test: /\.md$/,
+      //   loader: "frontmatter-markdown-loader",
+      //   options: { mode: ["body"] },
+      // },
       {
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
         exclude: config.exclude,

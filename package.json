@@ -1,16 +1,9 @@
 {
   "name": "koaladigital",
-  "description": "Koala Digital's homepage",
-  "version": "19.4.4",
+  "description": "Koala Digital's website",
+  "version": "1.0.0",
   "license": "UNLICENSED",
   "private": true,
-  "devDependencies": {
-    "autoprefixer": "^9.8.2",
-    "frontmatter-markdown-loader": "^3.6.0",
-    "postcss-cli": "^7.1.1",
-    "react-markdown": "^4.3.1",
-    "tailwindcss": "^1.4.6"
-  },
   "scripts": {
     "dev": "next",
     "css": "postcss tailwind.css -o public/css/tailwind.css",
@@ -21,11 +14,19 @@
   "dependencies": {
     "date-fns": "^2.14.0",
     "file-loader": "^6.0.0",
-    "next": "^9.4.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "gray-matter": "^4.0.2",
+    "next": "latest",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
     "underscore": "^1.10.2",
     "url-loader": "^4.1.0",
     "use-sound": "^1.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.2",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^1.4.6"
   }
 }
