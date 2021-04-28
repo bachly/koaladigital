@@ -5,8 +5,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    const title = `KoalaDigital 🐨 | Custom Web, Shopify and Webmaster Service in Ryde
-    Sydney, Australia`;
+    const title = `KoalaDigital 🐨 | Shopify and Webmaster Services in Ryde Sydney, Australia`;
 
     return (
       <>
@@ -21,6 +20,7 @@ class MyApp extends App {
           <meta content={title} property="twitter:title" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
           <link href="/css/tailwind.css" rel="stylesheet" type="text/css" />
+          <script src="/js/gosquared.js" type="text/javascript" />
         </Head>
         <Component {...pageProps} />
       </>

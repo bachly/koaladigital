@@ -110,13 +110,10 @@ function HomePage() {
       <section className="mt-24 lg:mt-48 px-0 lg:px-16 py-12 lg:py-24 bg-black text-gray-400">
         <div className="px-4 lg:max-w-full">
           <h2 className="text-xl md:text-2xl lg:text-5xl font-bold leading-tight">
-            Whether you develop a custom web application, refresh an existing
-            web interface, or simply need a webmaster who can look after your
-            digital presence,{" "}
+            You can chat with me here on this page, or send an email to
             <a className="text-gray-700" href="mailto:bach@koaladigital.com.au">
-              email me
+              bach@koaladigital.com.au
             </a>
-            . First consultation is free.{` `}
           </h2>
         </div>
       </section>
