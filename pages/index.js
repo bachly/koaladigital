@@ -14,28 +14,27 @@ const services = [
     iconName: "coffee-cup"
   },
   {
-    title: `Bespoke Lead capture website`,
-    description: `Not ready to launch? Just want to test the water? Fear not! By creating a custom Lead capture website, you can give
+    title: `Informational Website`,
+    description: `By creating a custom Informational Website, you can give
     your customers a taste of what is coming, and capture their email address into a CRM for future follow-up.`,
     iconName: "users"
   },
   {
-    title: `Custom Shopify plugin`,
+    title: `Responsive Website`,
+    description: `Whether it is Webflow, Worpress or any CMS, we can create and modify websites that work beautifully on both desktop and mobile devices.`,
+    iconName: "laptop-phone"
+  },
+  {
+    title: `Shopify Plugin`,
     description: `We can create custom Shopify frontend and backend plugin. Backend plugins help ease the management of your store.
     Frontend plugins, such as a Smart Calculator of some sort, give values to your customers.`,
     iconName: "chart-bars"
   },
   {
-    title: `Bespoke Shopify store`,
+    title: `Shopify Store`,
     description: `We can create a bespoke Shopify store from scratch, to match any requirements you can think of. Give your customers
     a unique shopping experience and stay ahead of your competition.`,
     iconName: "store"
-  },
-  {
-    title: `Custom Multi-platform App`,
-    description: `Multi-platform App is the best way to turn an idea into an app or an online business. Your Multi-platform App
-    can be deployed to the web and/or as a desktop application, and/or as a native phone app.`,
-    iconName: "laptop-phone"
   },
   {
     title: `Webmaster Service`,
@@ -44,8 +43,8 @@ const services = [
     iconName: "cog"
   },
   {
-    title: `Social Media & SEO Service`,
-    description: `We can help you reach new audience, generates leads and follows from paid media and organic traffic, including 
+    title: `Digital Marketing`,
+    description: `We can help you reach new audience, generates leads and follows from paid media, social media & organic traffic, including 
     Facebook and Instagram Ads, Google Ads and Search Engine optimisation.`,
     iconName: "bullhorn"
   }
@@ -126,11 +125,11 @@ function HomePage() {
     <>
       <header className="mt-6 lg:mt-64 bg-white px-4 lg:px-12">
         <div className="text-5xl lg:text-7xl font-mono font-bold">{`{'O'}`}</div>
-        <h1 className="text-3xl lg:text-5xl font-black leading-none">
-          KoalaDigital helps your business GROW. Full stop.
+        <h1 className="mt-2 text-3xl lg:text-5xl font-black leading-none">
+          KoalaDigital can help you GROW your business.
         </h1>
         <div className="max-w-5xl mt-4 text-lg lg:text-2xl leading-tight">
-          Based in Ryde Sydney Australia, we create custom Ecommerce Stores and Multi-platform Apps that give values to your customers, which in turn generate leads and revenues.
+          Based in Ryde Sydney Australia, we create Ecommerce Stores and Digital Marketing campaigns that give values to your customers, which in turn generate leads and revenues.
           </div>
       </header>
 
@@ -162,47 +161,21 @@ function HomePage() {
         </section>
       </main>
 
-      <footer className="mt-24 lg:mt-48 px-0 lg:px-8 py-12 lg:py-24 bg-black text-gray-400">
+      <footer className="mt-24 lg:mt-48 px-0 lg:px-8 py-12 lg:pt-12 lg:pb-6  bg-black text-gray-400">
         <div className="px-4 lg:max-w-full">
 
           <div className="text-base lg:text-3xl font-bold leading-tight">
             <div className="flex flex-wrap items-center">
-              <span className="inline-block w-10 h-10 fill-current text-gray-400 mr-4">
-                <Icon name="bubble" />
-              </span>
-              Chat with Bach directly on this page
-            </div>
-          </div>
-
-          <div className="mt-2 text-base lg:text-3xl font-bold leading-tight">
-            <div className="flex flex-wrap items-center">
-              <span className="inline-block w-10 h-10 fill-current text-gray-400 mr-4">
-                <Icon name="envelope" />
-              </span>
-              <a className="text-gray-400 hover:underline" href="mailto:bach@koaladigital.com.au">
+              Chat with Bach directly on this page, or email&nbsp;<a className="text-gray-600 hover:underline" href="mailto:bach@koaladigital.com.au">
                 bach@koaladigital.com.au
               </a>
             </div>
           </div>
 
-          <div className="mt-2 text-base lg:text-3xl font-bold leading-tight">
+          <div className="mt-6 text-xs leading-tight">
             <div className="flex flex-wrap items-center">
-              <span className="inline-block w-10 h-10 fill-current text-gray-400 mr-4">
-                <Icon name="license" />
-              </span>
               <span className="text-gray-400">
-                ABN: 39 614 832 450
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-2 text-base lg:text-3xl font-bold leading-tight">
-            <div className="flex flex-wrap items-center">
-              <span className="inline-block w-10 h-10 fill-current text-gray-400 mr-4">
-                <Icon name="map-marker" />
-              </span>
-              <span className="text-gray-400">
-                Ryde NSW <span className="text-gray-700">(not open for public)</span>
+               Copyright© Koala Digital Pty Ltd. All rights reserved. Address: Ryde NSW Australia (not open for public). ABN: 39 614 832 450
               </span>
             </div>
           </div>
