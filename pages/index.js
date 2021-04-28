@@ -32,8 +32,8 @@ const services = [
     iconName: "store"
   },
   {
-    title: `Custom Multi-platform App`,
-    description: `Multi-platform App is the best way to turn an idea into an app or an online business. Your Multi-platform App
+    title: `Custom Cross-device App`,
+    description: `Cross-device App is the best way to turn an idea into an app or an online business. Your Cross-device App
     can be deployed to the web and/or as a desktop application, and/or as a native phone app.`,
     iconName: "laptop-phone"
   },
@@ -123,43 +123,45 @@ const sampleworks = [
 ];
 function HomePage() {
   return (
-    <div className="bg-white pt-12 text-gray-900">
-      <header className="mt-6 lg:mt-64 bg-white lg:px-12">
-        <h1 className="text-3xl lg:text-5xl font-black leading-tight">
+    <>
+      <header className="mt-6 lg:mt-64 bg-white px-4 lg:px-12">
+        <h1 className="text-3xl lg:text-5xl font-black leading-none">
           KoalaDigital helps your business GROW. Full stop.
           </h1>
-        <div className="max-w-5xl mt-1 text-2xl leading-tight">
-          Based in Ryde Sydney Australia, we create custom Ecommerce Stores and Smart Web-based Applications that give values to your customers, which in turn generate leads and revenues.
+        <div className="max-w-5xl mt-4 text-lg lg:text-2xl leading-tight">
+          Based in Ryde Sydney Australia, we create custom Ecommerce Stores and Smart Cross-device Apps that give values to your customers, which in turn generate leads and revenues.
           </div>
       </header>
 
-      <section className="mt-24 px-0 lg:mt-48 lg:px-12">
-        <div className="mx-auto lg:max-w-full">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-            Our services
+      <main className="bg-white text-gray-900 px-4 lg:px-12">
+        <section className="mt-24 px-0 lg:mt-48">
+          <div className="mx-auto lg:max-w-full">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight">
+              Our services
           </h2>
-          <div className="mt-12 lg:mt-24 grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8">
-            {services.map((service, index) => (
-              <Service key={index} {...service} />
-            ))}
+            <div className="mt-12 lg:mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+              {services.map((service, index) => (
+                <Service key={index} {...service} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="mt-24 px-0 lg:mt-48 lg:px-12">
-        <div className="mx-auto lg:max-w-full">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-            Sample work
+        <section className="mt-24 px-0 lg:mt-48">
+          <div className="mx-auto lg:max-w-full">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight">
+              Sample work
           </h2>
-          <div className="mt-12 lg:mt-24 grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8">
-            {sampleworks.map((workpiece, index) => (
-              <SampleWork key={index} {...workpiece} />
-            ))}
+            <div className="mt-12 lg:mt-24 grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8">
+              {sampleworks.map((workpiece, index) => (
+                <SampleWork key={index} {...workpiece} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      <section className="mt-24 lg:mt-48 px-0 lg:px-8 py-12 lg:py-24 bg-black text-gray-400">
+      <footer className="mt-24 lg:mt-48 px-0 lg:px-8 py-12 lg:py-24 bg-black text-gray-400">
         <div className="px-4 lg:max-w-full">
           <h2 className="text-lg md:text-2xl lg:text-3xl font-bold leading-tight">
             Chat with Bach directly on this page, or send an email to{" "}
@@ -168,8 +170,8 @@ function HomePage() {
             </a>
           </h2>
         </div>
-      </section>
-    </div>
+      </footer>
+    </>
   );
 }
 
@@ -186,15 +188,15 @@ function Service({ title, description, iconName }) {
     <div className="w-full">
       <div className="relative">
         {iconName ? (
-          <div class="w-12 h-12">
+          <div className="w-12 h-12">
             <Icon name={iconName} />
           </div>
         ) : (
           <div className="bg-gray-200 pt-2/3"></div>
         )}
       </div>
-      <h3 className="text-xl mt-4 mb-2 font-extrabold leading-tight">{title}</h3>
-      <p className="text-lg text-gray-900 leading-snug">
+      <h3 className="text-lg lg:text-xl mt-4 mb-2 font-extrabold leading-tight">{title}</h3>
+      <p className="text-base lg:text-lg text-gray-900 leading-snug">
         {description}
       </p>
     </div>
@@ -203,7 +205,7 @@ function Service({ title, description, iconName }) {
 
 function SampleWork({ title, description, imageSrc, imageAlt }) {
   return (
-    <div className="w-full">
+    <div className="w-full mt-6 lg:mt-0">
       <div className="relative">
         {imageSrc ? (
           <img
@@ -216,7 +218,7 @@ function SampleWork({ title, description, imageSrc, imageAlt }) {
         )}
       </div>
       <h3 className="text-xl mt-4 mb-2 font-extrabold leading-tight">{title}</h3>
-      <p className="text-lg text-gray-900 leading-snug">
+      <p className="text-base lg:text-lg text-gray-900 leading-snug">
         {description}
       </p>
     </div>
