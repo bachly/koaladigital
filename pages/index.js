@@ -32,8 +32,8 @@ const services = [
     iconName: "store"
   },
   {
-    title: `Custom Cross-device App`,
-    description: `Cross-device App is the best way to turn an idea into an app or an online business. Your Cross-device App
+    title: `Custom Multi-platform App`,
+    description: `Multi-platform App is the best way to turn an idea into an app or an online business. Your Multi-platform App
     can be deployed to the web and/or as a desktop application, and/or as a native phone app.`,
     iconName: "laptop-phone"
   },
@@ -125,11 +125,12 @@ function HomePage() {
   return (
     <>
       <header className="mt-6 lg:mt-64 bg-white px-4 lg:px-12">
+        <div className="text-5xl lg:text-7xl font-mono font-bold">{`{'O'}`}</div>
         <h1 className="text-3xl lg:text-5xl font-black leading-none">
           KoalaDigital helps your business GROW. Full stop.
-          </h1>
+        </h1>
         <div className="max-w-5xl mt-4 text-lg lg:text-2xl leading-tight">
-          Based in Ryde Sydney Australia, we create custom Ecommerce Stores and Smart Cross-device Apps that give values to your customers, which in turn generate leads and revenues.
+          Based in Ryde Sydney Australia, we create custom Ecommerce Stores and Multi-platform Apps that give values to your customers, which in turn generate leads and revenues.
           </div>
       </header>
 
@@ -163,12 +164,48 @@ function HomePage() {
 
       <footer className="mt-24 lg:mt-48 px-0 lg:px-8 py-12 lg:py-24 bg-black text-gray-400">
         <div className="px-4 lg:max-w-full">
-          <h2 className="text-lg md:text-2xl lg:text-3xl font-bold leading-tight">
-            Chat with Bach directly on this page, or send an email to{" "}
-            <a className="text-gray-700" href="mailto:bach@koaladigital.com.au">
-              bach@koaladigital.com.au
-            </a>
-          </h2>
+
+          <div className="text-base lg:text-3xl font-bold leading-tight">
+            <div className="flex flex-wrap items-center">
+              <span className="inline-block w-10 h-10 fill-current text-gray-400 mr-4">
+                <Icon name="bubble" />
+              </span>
+              Chat with Bach directly on this page
+            </div>
+          </div>
+
+          <div className="mt-2 text-base lg:text-3xl font-bold leading-tight">
+            <div className="flex flex-wrap items-center">
+              <span className="inline-block w-10 h-10 fill-current text-gray-400 mr-4">
+                <Icon name="envelope" />
+              </span>
+              <a className="text-gray-400 hover:underline" href="mailto:bach@koaladigital.com.au">
+                bach@koaladigital.com.au
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-2 text-base lg:text-3xl font-bold leading-tight">
+            <div className="flex flex-wrap items-center">
+              <span className="inline-block w-10 h-10 fill-current text-gray-400 mr-4">
+                <Icon name="license" />
+              </span>
+              <span className="text-gray-400">
+                ABN: 39 614 832 450
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-2 text-base lg:text-3xl font-bold leading-tight">
+            <div className="flex flex-wrap items-center">
+              <span className="inline-block w-10 h-10 fill-current text-gray-400 mr-4">
+                <Icon name="map-marker" />
+              </span>
+              <span className="text-gray-400">
+                Ryde NSW <span className="text-gray-700">(not open for public)</span>
+              </span>
+            </div>
+          </div>
         </div>
       </footer>
     </>

@@ -5,7 +5,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    const title = `KoalaDigital 🐨 | Shopify and Webmaster Services in Ryde Sydney, Australia`;
+    const title = `{'0'} KoalaDigital | Ecommerce & Web Developer Freelancer in Ryde Sydney, Australia`;
 
     return (
       <>
@@ -13,7 +13,7 @@ class MyApp extends App {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <meta
-            content="Professional Service to build new or extend your Web Applications and Shopify stores • First consultation free • Affordable Webmaster Service also available"
+            content="Based in Ryde Sydney Australia, we help your business GROW by creating bespoke Ecommerce Stores and Smart Cross-device Apps."
             name="description"
           />
           <meta content={title} property="og:title" />
