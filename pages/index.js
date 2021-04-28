@@ -112,11 +112,10 @@ function HomePage() {
           <h2 className="text-xl md:text-2xl lg:text-5xl font-bold leading-tight">
             Whether you develop a custom web application, refresh an existing
             web interface, or simply need a webmaster who can look after your
-            digital presence,{" "}
+            digital presence,{" "}email
             <a className="text-gray-700" href="mailto:bach@koaladigital.com.au">
-              email me
+              bach@koaladigital.com.au
             </a>
-            . First consultation is free.{` `}
           </h2>
         </div>
       </section>
