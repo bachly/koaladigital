@@ -14,8 +14,8 @@ const services = [
     iconName: "coffee-cup"
   },
   {
-    title: `Informational Website`,
-    description: `By creating a custom Informational Website, you can give
+    title: `Lead Capture Website`,
+    description: `Not ready to launch? Just want to test the water? By creating a Lead Capture Website, you can give
     your customers a taste of what is coming, and capture their email address into a CRM for future follow-up.`,
     iconName: "users"
   },
