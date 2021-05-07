@@ -24,7 +24,7 @@
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "underscore": "^1.10.2",
+    "underscore": "^1.12.1",
     "url-loader": "^4.1.0",
     "use-sound": "^1.0.2"
   }
